@@ -89,7 +89,7 @@ SET (LashEnable ${LASH_FOUND} CACHE BOOL
     "Enable LASH Audio Session Handler")
 SET (DssiEnable ${DSSI_FOUND} CACHE BOOL
     "Enable DSSI Plugin compilation")
-SET (NoNeonPlease False CACHE BOOL
+SET (NoNeonPlease True CACHE BOOL
     "Workaround For Broken Neon Detection")
 SET (PluginLibDir "lib" CACHE STRING
     "Install directory for plugin libraries PREFIX/PLUGIN_LIB_DIR/{lv2,vst}")
@@ -259,7 +259,7 @@ set (BuildOptions_SSE
 check_cxx_compiler_flag("${BuildOptions_SSE} -Werror" SUPPORT_SSE)
 
 set (BuildOptionsBasic
-    "-std=c++11 -Wno-unused-parameter -O3 -ffast-math -fomit-frame-pointer"
+    "-std=c++11 -Wno-unused-parameter -O3 -ffast-math -fomit-frame-pointer -march=armv6zk -mcpu=arm1176jzf-s -mfloat-abi=hard -mfpu=vfp"
     CACHE STRING "basic X86 compiler options"
 )
 STRING(APPEND BuildOptionsBasic " ${BuildOptions_ExtendedWarnings}")
